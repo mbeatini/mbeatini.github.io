@@ -36,7 +36,7 @@ function readBody(xhr) {
     }
     return data;
 }
-
+alert('qui');
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function() {
     if (xhr.readyState == XMLHttpRequest.DONE) {
@@ -45,6 +45,8 @@ xhr.onreadystatechange = function() {
 }
 xhr.open('GET', 'http://stats.piaggio.com/getxmlsites/tree/?b=vespa&format=json', true);
 xhr.send(null);
+
+alert('qua');
 </script>
 
 </head>
