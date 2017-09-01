@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<title></title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+<script>
+
+$(document).ready(function(){
+  $("button").click(function(){
+ alert('qui');
+   $.ajax({
+      url: "http://stats.piaggio.com/getxmlsites/tree/?b=vespa&format=json",
+      dataType : "json",
+      contentType: "application/json; charset=utf-8",
+      cache: false,
+      success: function(response) {
+        alert(response);
+      },
+      error: function (e) {
+      }
+      });
+  });
+});
+</script>
+
+<script>
+
+function readBody(xhr) {
+    var data;
+    if (!xhr.responseType || xhr.responseType === "text") {
+        data = xhr.responseText;
+    } else if (xhr.responseType === "document") {
+        data = xhr.responseXML;
+    } else {
+        data = xhr.response;
+    }
+    return data;
+}
+
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+        alert(readBody(xhr));
+    }
+}
+xhr.open('GET', 'http://stats.piaggio.com/getxmlsites/tree/?b=vespa&format=json', true);
+xhr.send(null);
+</script>
+
+</head>
+<body>
+<button>Send an HTTP GET request to a page and get the result back</button>
+</body>
+</html>
